@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Branch</title>
+</head>
+<body>
+    <h1>Add Branch</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div>
+            <label for="id_name">Name:</label>
+            <input type="text" name="name" id="id_name" value="{{ form.name.value|default:'' }}" required>
+            {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="id_transit_num">Transit Number:</label>
+            <input type="text" name="transit_num" id="id_transit_num" value="{{ form.transit_num.value|default:'' }}" required>
+            {% if form.transit_num.errors %}
+                {% for error in form.transit_num.errors %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="id_address">Address:</label>
+            <input type="text" name="address" id="id_address" value="{{ form.address.value|default:'' }}" required>
+            {% if form.address.errors %}
+                {% for error in form.address.errors %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="id_email">Email:</label>
+            <input type="email" name="email" id="id_email" value="{{ form.email.value|default:'' }}" required>
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="id_capacity">Capacity:</label>
+            <input type="number" name="capacity" id="id_capacity" value="{{ form.capacity.value|default:'' }}" min="0">
+            {% if form.capacity.errors %}
+                {% for error in form.capacity.errors %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <button type="submit">Add Branch</button>
+    </form>
+</body>
+</html>
+

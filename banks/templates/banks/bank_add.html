@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Bank</title>
+</head>
+<body>
+    <h1>Add Bank</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div>
+            <label for="id_name">Name:</label>
+            <input type="text" name="name" id="id_name" value="{{ form.name.value|default:'' }}" required>
+            {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="id_description">Description:</label>
+            <input type="text" name="description" id="id_description" value="{{ form.description.value|default:'' }}" required>
+            {% if form.description.errors %}
+                {% for error in form.description.errors %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="id_inst_num">Institution Number:</label>
+            <input type="text" name="inst_num" id="id_inst_num" value="{{ form.inst_num.value|default:'' }}" required>
+            {% if form.inst_num.errors %}
+                {% for error in form.inst_num.errors %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div>
+            <label for="id_swift_code">SWIFT Code:</label>
+            <input type="text" name="swift_code" id="id_swift_code" value="{{ form.swift_code.value|default:'' }}" required>
+            {% if form.swift_code.errors %}
+                {% for error in form.swift_code.errors %}
+                    <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <button type="submit">Add Bank</button>
+    </form>
+</body>
+</html>
+
